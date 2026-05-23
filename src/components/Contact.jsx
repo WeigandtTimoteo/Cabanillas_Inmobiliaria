@@ -13,7 +13,6 @@ export default function Contact() {
   return (
     <section id="contacto" className="bg-white py-28 px-6 md:px-16 w-full">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-        {/* Izquierda */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +92,6 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Derecha - Formulario */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

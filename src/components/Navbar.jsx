@@ -21,7 +21,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* SE CORRIGIERON LAS CLASES DEL BORDE Y LA TRANSICIÓN ACÁ */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -34,7 +33,6 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
           
-          {/* Logo Combinado */}
           <a 
             href="#inicio" 
             className="flex items-center gap-4 h-full py-2 transition-transform duration-300 hover:scale-[1.03] origin-left transform-gpu will-change-transform"
@@ -52,8 +50,7 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Menú Escritorio */}
-          <ul className="hidden md:flex items-center gap-10">
+          <ul className="hidden md:flex items-center gap-10 ml-auto">
             {links.map((link) => (
               <li key={link.label}>
                 <a
@@ -68,21 +65,6 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-4">
-            {/* Instagram SVG */}
-            <a
-              href="https://www.instagram.com/cabanillasinmobiliaria/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:flex items-center hover:opacity-50 transition-opacity duration-300"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-              </svg>
-            </a>
-            
-            {/* Hamburguesa Móvil */}
             <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
               {menuOpen ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -98,7 +80,6 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Menú Móvil Desplegable */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -119,13 +100,6 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="https://www.instagram.com/cabanillasinmobiliaria/" target="_blank" rel="noopener noreferrer" className="mt-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-              </svg>
-            </a>
           </motion.div>
         )}
       </AnimatePresence>

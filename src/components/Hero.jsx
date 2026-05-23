@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
+import imgPrincipal from "../assets/pics/princ.jpg";
 
 export default function Hero() {
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col bg-white">
       <div className="flex-1 grid grid-cols-1 md:grid-cols-2 min-h-screen">
-        {/* Text side */}
         <div className="flex flex-col justify-center px-6 md:px-16 pb-16 pt-32 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -49,36 +49,21 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Image placeholder side */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.1 }}
-          className="relative"
-          style={{ minHeight: "60vh" }}
+          className="relative h-full min-h-[50vh] md:min-h-screen overflow-hidden"
         >
-          <div
-            className="absolute inset-0 md:inset-4"
-            style={{ backgroundColor: "#00FF00" }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-              <div
-                style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#000", opacity: 0.5 }}
-                className="uppercase"
-              >
-                Imagen principal
-              </div>
-              <div
-                style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "0.9rem", fontWeight: 300, color: "#000", opacity: 0.4 }}
-              >
-                Placeholder
-              </div>
-            </div>
-          </div>
+          <img 
+            src={imgPrincipal} 
+            alt="Edificios corporativos Cabanillas"
+            className="w-full h-full object-cover md:absolute md:inset-0"
+            style={{ imageRendering: "auto" }} 
+          />
         </motion.div>
       </div>
 
-      {/* Scroll indicator - SVG Flecha abajo */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         animate={{ y: [0, 8, 0] }}

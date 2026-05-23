@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Reseteo absoluto para eliminar los límites por defecto de Vite */
 html,
 body,
 #root {
