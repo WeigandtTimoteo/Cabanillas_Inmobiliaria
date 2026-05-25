@@ -1,31 +1,27 @@
 import { motion } from "motion/react";
 import imgPrincipal from "../assets/pics/princ.jpg";
+import { COLORS } from "../constants/colors";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen flex flex-col bg-white">
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 min-h-screen">
-        <div className="flex flex-col justify-center px-6 md:px-16 pb-16 pt-32 md:pt-0">
+    <section id="inicio" style={{ backgroundColor: COLORS.bg }} className="relative min-h-screen flex flex-col">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        
+        <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-16 pb-16 pt-28 lg:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
           >
-            <p
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, letterSpacing: "0.3em", color: "#888" }}
-              className="uppercase mb-6"
-            >
-              Inmobiliaria
-            </p>
             <h1
-              style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(3rem, 7vw, 6rem)", fontWeight: 300, lineHeight: 1.05, color: "#000" }}
+              style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.5rem, 5vw, 5.5rem)", fontWeight: 300, lineHeight: 1.05, color: COLORS.text }}
             >
               Tu próxima<br />
               <em>propiedad,</em><br />
               aquí.
             </h1>
             <p
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 300, lineHeight: 1.8, color: "#555" }}
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 300, lineHeight: 1.8, color: COLORS.subtle }}
               className="mt-8 max-w-xs"
             >
               Asesoramiento personalizado en compra, venta y alquiler de propiedades. Confianza y resultados.
@@ -34,14 +30,14 @@ export default function Hero() {
               <a
                 href="#propiedades"
                 style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em" }}
-                className="uppercase bg-black text-white px-8 py-4 hover:bg-black/80 transition-colors duration-300"
+                className="uppercase bg-white text-black px-8 py-4 hover:bg-white/85 transition-colors duration-300"
               >
                 Ver propiedades
               </a>
               <a
                 href="#contacto"
                 style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em" }}
-                className="uppercase border border-black text-black px-8 py-4 hover:bg-black hover:text-white transition-colors duration-300"
+                className="uppercase border border-white text-white px-8 py-4 hover:bg-white hover:text-black transition-colors duration-300"
               >
                 Contactar
               </a>
@@ -53,12 +49,12 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.1 }}
-          className="relative h-full min-h-[50vh] md:min-h-screen overflow-hidden"
+          className="relative h-full min-h-[50vh] lg:min-h-screen overflow-hidden"
         >
           <img 
             src={imgPrincipal} 
             alt="Edificios corporativos Cabanillas"
-            className="w-full h-full object-cover md:absolute md:inset-0"
+            className="w-full h-full object-cover lg:absolute lg:inset-0"
             style={{ imageRendering: "auto" }} 
           />
         </motion.div>
@@ -69,7 +65,7 @@ export default function Hero() {
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={COLORS.text} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
           <line x1="12" y1="5" x2="12" y2="19" />
           <polyline points="19 12 12 19 5 12" />
         </svg>
