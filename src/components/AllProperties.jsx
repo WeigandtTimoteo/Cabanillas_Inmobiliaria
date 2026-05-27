@@ -7,6 +7,7 @@ export default function AllProperties({ onSelectProperty }) {
   const [properties, setProperties] = useState([]);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({
+    operation_type: "",
     age_status: "",
     rooms: "",
     min_price: "",
@@ -16,6 +17,7 @@ export default function AllProperties({ onSelectProperty }) {
   useEffect(() => {
     const params = new URLSearchParams();
     if (search) params.append("search", search);
+    if (filters.operation_type) params.append("operation_type", filters.operation_type);
     if (filters.age_status) params.append("age_status", filters.age_status);
     if (filters.rooms) params.append("rooms", filters.rooms);
     if (filters.min_price) params.append("min_price", filters.min_price);
@@ -51,7 +53,7 @@ export default function AllProperties({ onSelectProperty }) {
           <div className="w-full lg:max-w-md relative">
             <input
               type="text"
-              placeholder="Buscar por ubicación o descripción..."
+              placeholder="Buscar por ubicación, título o descripción..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)" }}
@@ -65,6 +67,18 @@ export default function AllProperties({ onSelectProperty }) {
           </div>
 
           <div className="w-full lg:w-auto flex flex-wrap gap-4 items-center">
+            <select
+              name="operation_type"
+              value={filters.operation_type}
+              onChange={handleFilterChange}
+              style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
+              className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer"
+            >
+              <option value="">Operación</option>
+              <option value="SALE">Venta</option>
+              <option value="RENT">Alquiler</option>
+            </select>
+
             <select
               name="age_status"
               value={filters.age_status}
@@ -134,19 +148,19 @@ export default function AllProperties({ onSelectProperty }) {
                 <div className="relative w-full mb-5 overflow-hidden border border-white/5" style={{ aspectRatio: "4/3" }}>
                   <img
                     src={prop.images && prop.images.length > 0 ? prop.images[0].image : imgC1}
-                    alt={prop.location}
+                    alt={prop.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ imageRendering: "auto" }}
                   />
                   <div className="absolute top-3 left-3 bg-white text-black px-3 py-1 font-mono font-bold text-[0.55rem] tracking-[0.2em] z-10">
-                    {prop.age_status === "CONSTRUCTION" ? "EN CONST." : prop.age_status === "NEW" ? "A ESTRENAR" : "USADO"}
+                    {prop.operation_type === "SALE" ? "VENTA" : "ALQUILER"}
                   </div>
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
                 </div>
 
                 <div>
                   <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.35rem", fontWeight: 400, color: COLORS.text }} className="mb-1 truncate">
-                    {prop.description}
+                    {prop.title || "Propiedad sin título"}
                   </h3>
                   <div className="flex items-center gap-1 mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={COLORS.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -112,7 +112,7 @@ export default function Properties({ onViewAll, onSelectProperty }) {
                 >
                   <img 
                     src={prop.images && prop.images.length > 0 ? prop.images[0].image : imgC1} 
-                    alt={prop.location} 
+                    alt={prop.title} 
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ imageRendering: "auto" }}
                   />
@@ -120,14 +120,14 @@ export default function Properties({ onViewAll, onSelectProperty }) {
                     className="absolute top-3 left-3 bg-white text-black px-3 py-1 font-mono font-bold z-10"
                     style={{ fontSize: "0.55rem", letterSpacing: "0.2em" }}
                   >
-                    {prop.age_status === "CONSTRUCTION" ? "EN CONST." : prop.age_status === "NEW" ? "A ESTRENAR" : "USADO"}
+                    {prop.operation_type === "SALE" ? "VENTA" : "ALQUILER"}
                   </div>
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
                 </div>
 
                 <div>
-                  <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.25rem", fontWeight: 400, color: COLORS.text }} className="mb-1 truncate">
-                    {prop.description}
+                  <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.3rem", fontWeight: 400, color: COLORS.text }} className="mb-1 truncate">
+                    {prop.title || "Propiedad sin título"}
                   </h3>
                   <div className="flex items-center gap-1 mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={COLORS.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

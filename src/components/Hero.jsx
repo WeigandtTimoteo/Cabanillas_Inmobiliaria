@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import imgPrincipal from "../assets/pics/princ.jpg";
 import { COLORS } from "../constants/colors";
 
-export default function Hero() {
+export default function Hero({ onConsign }) {
   return (
     <section id="inicio" style={{ backgroundColor: COLORS.bg }} className="relative min-h-screen flex flex-col">
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -34,13 +34,13 @@ export default function Hero() {
               >
                 Ver propiedades
               </a>
-              <a
-                href="#contacto"
+              <button
+                onClick={onConsign}
                 style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", letterSpacing: "0.25em" }}
-                className="uppercase border border-white text-white px-8 py-4 hover:bg-white hover:text-black transition-colors duration-300"
+                className="uppercase bg-transparent text-white border border-white/20 px-8 py-4 hover:bg-white hover:text-black hover:border-white transition-colors duration-300 self-start"
               >
-                Contactar
-              </a>
+                Quiero vender / alquilar
+              </button>
             </div>
           </motion.div>
         </div>
