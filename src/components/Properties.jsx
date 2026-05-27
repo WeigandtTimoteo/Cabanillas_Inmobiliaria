@@ -9,7 +9,7 @@ export default function Properties({ onViewAll, onSelectProperty }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/properties/list/")
+    fetch(import.meta.env.VITE_API_URL)
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));

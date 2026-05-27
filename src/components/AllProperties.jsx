@@ -21,7 +21,7 @@ export default function AllProperties({ onSelectProperty }) {
     if (filters.min_price) params.append("min_price", filters.min_price);
     if (filters.max_price) params.append("max_price", filters.max_price);
 
-    fetch(`http://127.0.0.1:8000/api/properties/list/?${params.toString()}`)
+    fetch(`${import.meta.env.VITE_API_URL}?${params.toString()}`)
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));

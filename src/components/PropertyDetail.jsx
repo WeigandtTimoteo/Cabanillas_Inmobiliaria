@@ -8,7 +8,7 @@ export default function PropertyDetail({ id, onBack }) {
   const [activeImage, setActiveImage] = useState("");
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/properties/list/${id}/`)
+    fetch(`${import.meta.env.VITE_API_URL}${id}/`)
       .then((res) => res.json())
       .then((data) => {
         setProperty(data);
