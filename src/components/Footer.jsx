@@ -52,7 +52,7 @@ export default function Footer({ setView }) {
             style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", fontWeight: 300, color: COLORS.subtle, letterSpacing: "0.1em" }}
             className="opacity-60 text-center md:text-right"
           >
-            © {new Date().getFullYear()} Cabanillas Inmobiliaria
+            © {new Date().getFullYear()} Cabanillas Servicios Inmobiliarios
           </span>
         </div>
 
