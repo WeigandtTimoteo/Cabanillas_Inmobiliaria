@@ -10,27 +10,22 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      // 1. Animación de entrada inicial (al cargar la página)
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ 
         opacity: 1, 
-        // 2. Animación de pulso continuo (respiración lenta)
-        scale: [1, 1.15, 1], // Escala entre 1 (100%) y 1.15 (115%)
+        scale: [1, 1.15, 1],
       }}
       transition={{ 
-        // Configuración de la animación de entrada inicial
         delay: 1, 
         duration: 0.5, 
         type: "spring", 
-        // Configuración del pulso continuo (debe aplicarse solo a la escala)
         scale: {
-          duration: 3,        // Ciclo muy lento de 3 segundos
-          ease: "easeInOut", // Suave al inicio y al final
-          repeat: Infinity,   // Repetir para siempre
-          repeatType: "mirror" // Va de 1 -> 1.05 -> 1 suavemente
+          duration: 3,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "mirror"
         }
       }}
-      // 3. Interacciones del usuario (hover y tap)
       whileHover={{ scale: 1.12, backgroundColor: "#FFFFFF" }}
       whileTap={{ scale: 0.95 }}
       style={{ backgroundColor: "#E5E5E5" }}

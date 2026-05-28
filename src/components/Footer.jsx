@@ -1,12 +1,31 @@
 import logoBlanco from "../assets/LOGO_BLANCO.svg";
 import { COLORS } from "../constants/colors";
 
-export default function Footer() {
+export default function Footer({ setView }) {
+  const handleNavClick = (item) => {
+    setView("home");
+    
+    let targetId = "inicio";
+    if (item === "Propiedades") {
+      targetId = "propiedades";
+    } else if (item === "Nosotros") {
+      targetId = "nosotros";
+    } else if (item === "Contacto") {
+      targetId = "contacto";
+    }
+
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   return (
     <footer className="bg-black text-white py-16 px-6 md:px-16 w-full border-t border-white/5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-center justify-between gap-10">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         
-        {/* COLUMNA 1: LOGO */}
         <div className="flex shrink-0">
           <img 
             src={logoBlanco} 
@@ -15,34 +34,20 @@ export default function Footer() {
           />
         </div>
 
-        {/* COLUMNA 2: NAVEGACIÓN CENTRAL */}
         <div className="flex flex-wrap justify-center gap-x-10 gap-y-4"> 
           {["Propiedades", "Nosotros", "Contacto"].map((item) => (
-            <a
+            <button
               key={item}
-              href={`#${item.toLowerCase()}`}
+              onClick={() => handleNavClick(item)}
               style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", fontWeight: 300, letterSpacing: "0.2em", color: COLORS.subtle }}
               className="uppercase hover:text-white transition-colors"
             >
               {item}
-            </a>
+            </button>
           ))}
         </div>
 
-        {/* COLUMNA 3: REDES + COPYRIGHT */}
         <div className="flex flex-col items-center md:items-end gap-2.5">
-          <a
-            href="https://www.instagram.com/cabanillasinmobiliaria/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-50 transition-opacity text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-            </svg>
-          </a>
           <span 
             style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", fontWeight: 300, color: COLORS.subtle, letterSpacing: "0.1em" }}
             className="opacity-60 text-center md:text-right"

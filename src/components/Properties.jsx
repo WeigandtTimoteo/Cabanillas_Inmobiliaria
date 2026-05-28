@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-
 import imgC1 from "../assets/pics/c1.jpg";
 import { COLORS } from "../constants/colors";
 
@@ -15,22 +14,33 @@ export default function Properties({ onViewAll, onSelectProperty }) {
       .catch((err) => console.error(err));
   }, []);
 
-  const nextSlide = () => {
+  const getBounds = () => {
     const isDesktop = window.innerWidth >= 768;
     const maxIndex = isDesktop ? properties.length - 3 : properties.length - 1;
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    }
+    return { maxIndex: maxIndex > 0 ? maxIndex : 0 };
+  };
+
+  const nextSlide = () => {
+    const { maxIndex } = getBounds();
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    const { maxIndex } = getBounds();
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const handleDragEnd = (event, info) => {
+    const swipeThreshold = 50;
+    if (info.offset.x < -swipeThreshold) {
+      nextSlide();
+    } else if (info.offset.x > swipeThreshold) {
+      prevSlide();
     }
   };
 
   return (
-    <section id="propiedades" style={{ backgroundColor: COLORS.bg }} className="py-28 px-6 md:px-16 w-full">
+    <section id="propiedades" style={{ backgroundColor: COLORS.bg }} className="py-20 md:py-28 px-4 sm:px-8 md:px-16 w-full">
       <div className="max-w-7xl mx-auto">
         
         <motion.div
@@ -38,27 +48,22 @@ export default function Properties({ onViewAll, onSelectProperty }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
+          className="mb-12 md:mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
         >
           <div>
-            <p
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, letterSpacing: "0.3em", color: COLORS.muted }}
-              className="uppercase mb-3"
-            >
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-3">
               Destacadas
             </p>
-            <h2
-              style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: COLORS.text }}
-            >
+            <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: COLORS.text }}>
               Propiedades seleccionadas
             </h2>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 justify-between sm:justify-end">
             <button
               onClick={onViewAll}
               style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: COLORS.text }}
-              className="uppercase underline underline-offset-4 hover:opacity-50 transition-opacity whitespace-nowrap hidden md:block"
+              className="uppercase underline underline-offset-4 hover:opacity-50 transition-opacity whitespace-nowrap"
             >
               Ver todas →
             </button>
@@ -66,10 +71,8 @@ export default function Properties({ onViewAll, onSelectProperty }) {
             <div className="flex gap-2">
               <button
                 onClick={prevSlide}
-                disabled={currentIndex === 0}
-                className={`w-12 h-12 border border-white/10 flex items-center justify-center transition-all ${
-                  currentIndex === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-white hover:text-black"
-                }`}
+                className="w-12 h-12 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black text-white"
+                aria-label="Anterior propiedad"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 18-6-6 6-6"/>
@@ -77,12 +80,8 @@ export default function Properties({ onViewAll, onSelectProperty }) {
               </button>
               <button
                 onClick={nextSlide}
-                disabled={properties.length <= 3 || (window.innerWidth >= 768 ? currentIndex === properties.length - 3 : currentIndex === properties.length - 1)}
-                className={`w-12 h-12 border border-white/10 flex items-center justify-center transition-all ${
-                  properties.length <= 3 || (window.innerWidth >= 768 ? currentIndex === properties.length - 3 : currentIndex === properties.length - 1)
-                    ? "opacity-30 cursor-not-allowed" 
-                    : "hover:bg-black hover:text-white"
-                }`}
+                className="w-12 h-12 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black text-white"
+                aria-label="Siguiente propiedad"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 18 6-6-6-6"/>
@@ -92,9 +91,13 @@ export default function Properties({ onViewAll, onSelectProperty }) {
           </div>
         </motion.div>
 
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden select-none">
           <motion.div
-            className="flex gap-6"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.15}
+            onDragEnd={handleDragEnd}
+            className="flex gap-6 cursor-grab active:cursor-grabbing transform-gpu"
             animate={{ 
               x: window.innerWidth >= 768 ? `calc(-${currentIndex} * (33.3333% + 8px))` : `calc(-${currentIndex} * (83vw + 24px))` 
             }}
@@ -106,20 +109,13 @@ export default function Properties({ onViewAll, onSelectProperty }) {
                 onClick={() => onSelectProperty(prop.id)}
                 className="w-[83vw] sm:w-full md:w-[calc(33.3333%-16px)] shrink-0 group cursor-pointer"
               >
-                <div
-                  className="relative w-full mb-5 overflow-hidden border border-white/5"
-                  style={{ aspectRatio: "4/3" }}
-                >
+                <div className="relative w-full mb-5 overflow-hidden border border-white/5" style={{ aspectRatio: "4/3" }}>
                   <img 
                     src={prop.images && prop.images.length > 0 ? prop.images[0].image : imgC1} 
                     alt={prop.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    style={{ imageRendering: "auto" }}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
                   />
-                  <div
-                    className="absolute top-3 left-3 bg-white text-black px-3 py-1 font-mono font-bold z-10"
-                    style={{ fontSize: "0.55rem", letterSpacing: "0.2em" }}
-                  >
+                  <div className="absolute top-3 left-3 bg-white text-black px-3 py-1 font-mono font-bold z-10" style={{ fontSize: "0.55rem", letterSpacing: "0.2em" }}>
                     {prop.operation_type === "SALE" ? "VENTA" : "ALQUILER"}
                   </div>
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />

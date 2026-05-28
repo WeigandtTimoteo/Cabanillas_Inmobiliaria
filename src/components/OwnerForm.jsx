@@ -15,7 +15,6 @@ export default function OwnerForm({ onBack }) {
   const targetNumber = "5493513348375";
   const targetEmail = "cabanillasinmobiliaria@gmail.com";
 
-  // EL BALANCE IDEAL: SALUDO HUMANO + LISTA TÉCNICA ESTRUCTURADA
   const buildTextMessage = () => {
     const operacionTexto = form.operacion === "Venta" ? "Venta" : "Alquiler";
     const detallesTexto = form.detalles.trim() ? form.detalles : "No especificados";
@@ -41,16 +40,14 @@ export default function OwnerForm({ onBack }) {
 
   const handleEmailSend = (e) => {
     e.preventDefault();
-    // Limpiamos los asteriscos de WhatsApp para el formato plano del correo
     const plainText = buildTextMessage().replace(/\*/g, "");
     const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetEmail}&su=Consulta%20Consignación%20-%20${form.nombre}&body=${plainText}`;
     window.open(url, "_blank");
   };
 
   return (
-    <section style={{ backgroundColor: COLORS.bg }} className="min-h-screen py-32 px-6 md:px-16 w-full text-white">
+    <section style={{ backgroundColor: COLORS.bg }} className="min-h-screen py-20 md:py-32 px-4 sm:px-8 md:px-16 w-full text-white">      
       <div className="max-w-3xl mx-auto">
-        
         <button
           onClick={onBack}
           style={{ fontFamily: "Inter, sans-serif", color: COLORS.muted }}

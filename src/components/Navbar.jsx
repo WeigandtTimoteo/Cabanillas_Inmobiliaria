@@ -14,19 +14,24 @@ export default function Navbar({ setView }) {
   }, []);
 
   const links = [
-    { label: "Inicio", view: "home", href: "" },
-    { label: "Propiedades", view: "all", href: "" },
-    { label: "Nosotros", view: "home", href: "#nosotros" },
-    { label: "Contacto", view: "home", href: "#contacto" },
+    { label: "Inicio", view: "home", targetId: "inicio" },
+    { label: "Propiedades", view: "home", targetId: "propiedades" },
+    { label: "Nosotros", view: "home", targetId: "nosotros" },
+    { label: "Contacto", view: "home", targetId: "contacto" },
   ];
 
-  const handleLinkClick = (viewName, href) => {
+  const handleLinkClick = (viewName, targetId) => {
     setView(viewName);
     setMenuOpen(false);
-    if (href) {
-      window.location.hash = href;
+    
+    if (viewName === "home" && targetId) {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } else {
-      window.history.pushState("", document.title, window.location.pathname + window.location.search);
       window.scrollTo({ top: 0 });
     }
   };
@@ -46,7 +51,7 @@ export default function Navbar({ setView }) {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
           
           <button 
-            onClick={() => handleLinkClick("home", "")}
+            onClick={() => handleLinkClick("home", "inicio")}
             className="flex items-center gap-4 h-full py-2 transition-transform duration-300 hover:scale-[1.03] origin-left transform-gpu will-change-transform text-left"
             style={{ backfaceVisibility: "hidden" }}
           >
@@ -66,7 +71,7 @@ export default function Navbar({ setView }) {
             {links.map((link) => (
               <li key={link.label}>
                 <button
-                  onClick={() => handleLinkClick(link.view, link.href)}
+                  onClick={() => handleLinkClick(link.view, link.targetId)}
                   style={{ fontFamily: "Inter, sans-serif", fontSize: "0.7rem", fontWeight: 300, letterSpacing: "0.2em", color: COLORS.text }}
                   className="hover:opacity-50 transition-opacity duration-300 uppercase"
                 >
@@ -104,7 +109,7 @@ export default function Navbar({ setView }) {
             {links.map((link) => (
               <button
                 key={link.label}
-                onClick={() => handleLinkClick(link.view, link.href)}
+                onClick={() => handleLinkClick(link.view, link.targetId)}
                 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "2rem", fontWeight: 300, letterSpacing: "0.1em", color: COLORS.text }}
                 className="hover:opacity-40 transition-opacity"
               >

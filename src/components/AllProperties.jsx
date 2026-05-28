@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import imgC1 from "../assets/pics/c1.jpg";
 import { COLORS } from "../constants/colors";
 
-export default function AllProperties({ onSelectProperty }) {
+export default function AllProperties({ onSelectProperty, onBack }) {
   const [properties, setProperties] = useState([]);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({
@@ -36,95 +36,168 @@ export default function AllProperties({ onSelectProperty }) {
     });
   };
 
+  const minVal = Number(filters.min_price) || 0;
+  const maxVal = Number(filters.max_price) || 2000000;
+
   return (
-    <section style={{ backgroundColor: COLORS.bg }} className="min-h-screen py-32 px-6 md:px-16 w-full text-white">
+    <section style={{ backgroundColor: COLORS.bg }} className="min-h-screen py-24 md:py-32 px-4 sm:px-8 md:px-16 w-full text-white">
       <div className="max-w-7xl mx-auto">
         
-        <div className="mb-16">
+        <button
+          onClick={onBack}
+          style={{ fontFamily: "Inter, sans-serif", color: COLORS.muted }}
+          className="mb-8 md:mb-12 flex items-center gap-2 text-xs tracking-wider uppercase hover:text-white transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Volver al inicio
+        </button>
+
+        <div className="mb-12">
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-3">
             Catálogo
           </p>
-          <h1 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", fontWeight: 300, color: COLORS.text }} className="line-height-1">
+          <h1 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)", fontWeight: 300, color: COLORS.text }} className="leading-none">
             Todas las propiedades
           </h1>
         </div>
 
-        <div className="mb-12 flex flex-col lg:flex-row gap-6 items-center justify-between">
-          <div className="w-full lg:max-w-md relative">
+        <div className="mb-16 flex flex-col gap-8 border-b border-white/5 pb-10">
+          
+          <div className="w-full relative">
             <input
               type="text"
               placeholder="Buscar por ubicación, título o descripción..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)" }}
-              className="w-full bg-transparent border-b py-3 px-1 focus:outline-none focus:border-white transition-colors text-sm font-light rounded-none"
+              className="w-full bg-transparent border-b py-3.5 px-1 focus:outline-none focus:border-white transition-colors text-sm font-light rounded-none"
             />
-            <div className="absolute right-2 top-3 opacity-40">
+            <div className="absolute right-2 top-4 opacity-40">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
               </svg>
             </div>
           </div>
 
-          <div className="w-full lg:w-auto flex flex-wrap gap-4 items-center">
-            <select
-              name="operation_type"
-              value={filters.operation_type}
-              onChange={handleFilterChange}
-              style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
-              className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer"
-            >
-              <option value="">Operación</option>
-              <option value="SALE">Venta</option>
-              <option value="RENT">Alquiler</option>
-            </select>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-start w-full">
+            
+            <div className="flex flex-col gap-2.5 w-full">
+              <label style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", color: COLORS.muted }} className="uppercase">
+                Operación
+              </label>
+              <select
+                name="operation_type"
+                value={filters.operation_type}
+                onChange={handleFilterChange}
+                style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
+                className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer h-11 w-full"
+              >
+                <option value="">Cualquiera</option>
+                <option value="SALE">Venta</option>
+                <option value="RENT">Alquiler</option>
+              </select>
+            </div>
 
-            <select
-              name="age_status"
-              value={filters.age_status}
-              onChange={handleFilterChange}
-              style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
-              className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer"
-            >
-              <option value="">Estado</option>
-              <option value="CONSTRUCTION">En Construcción</option>
-              <option value="NEW">A Estrenar</option>
-              <option value="USED">Usado</option>
-            </select>
+            <div className="flex flex-col gap-2.5 w-full">
+              <label style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", color: COLORS.muted }} className="uppercase">
+                Estado
+              </label>
+              <select
+                name="age_status"
+                value={filters.age_status}
+                onChange={handleFilterChange}
+                style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
+                className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer h-11 w-full"
+              >
+                <option value="">Cualquiera</option>
+                <option value="CONSTRUCTION">En Construcción</option>
+                <option value="NEW">A Estrenar</option>
+                <option value="USED">Usado</option>
+              </select>
+            </div>
 
-            <select
-              name="rooms"
-              value={filters.rooms}
-              onChange={handleFilterChange}
-              style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
-              className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer"
-            >
-              <option value="">Ambientes</option>
-              <option value="1">1 Ambiente</option>
-              <option value="2">2 Ambientes</option>
-              <option value="3">3 Ambientes</option>
-              <option value="4">4+ Ambientes</option>
-            </select>
+            <div className="flex flex-col gap-2.5 w-full">
+              <label style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", color: COLORS.muted }} className="uppercase">
+                Ambientes
+              </label>
+              <select
+                name="rooms"
+                value={filters.rooms}
+                onChange={handleFilterChange}
+                style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)", backgroundColor: COLORS.bg }}
+                className="bg-black text-white border px-4 py-2.5 text-xs font-light tracking-wider uppercase focus:outline-none focus:border-white rounded-none cursor-pointer h-11 w-full"
+              >
+                <option value="">Cualquiera</option>
+                <option value="1">1 Ambiente</option>
+                <option value="2">2 Ambientes</option>
+                <option value="3">3 Ambientes</option>
+                <option value="4">4+ Ambientes</option>
+              </select>
+            </div>
 
-            <input
-              type="number"
-              name="min_price"
-              placeholder="Min USD"
-              value={filters.min_price}
-              onChange={handleFilterChange}
-              style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)" }}
-              className="bg-transparent border text-white text-xs font-light px-4 py-2.5 w-28 focus:outline-none focus:border-white rounded-none"
-            />
+            <div className="flex flex-col gap-2.5 w-full lg:col-span-2">
+              <label style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", color: COLORS.muted }} className="uppercase">
+                Rango de Precio (USD)
+              </label>
+              
+              <div className="flex gap-3 w-full">
+                <input
+                  type="number"
+                  name="min_price"
+                  placeholder="Mínimo"
+                  value={filters.min_price}
+                  onChange={handleFilterChange}
+                  style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)" }}
+                  className="bg-black border text-white text-xs font-light px-4 py-2 w-full focus:outline-none focus:border-white rounded-none h-11 text-center"
+                />
+                <input
+                  type="number"
+                  name="max_price"
+                  placeholder="Máximo"
+                  value={filters.max_price}
+                  onChange={handleFilterChange}
+                  style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)" }}
+                  className="bg-black border text-white text-xs font-light px-4 py-2 w-full focus:outline-none focus:border-white rounded-none h-11 text-center"
+                />
+              </div>
 
-            <input
-              type="number"
-              name="max_price"
-              placeholder="Max USD"
-              value={filters.max_price}
-              onChange={handleFilterChange}
-              style={{ fontFamily: "Inter, sans-serif", borderColor: "rgba(255,255,255,0.1)" }}
-              className="bg-transparent border text-white text-xs font-light px-4 py-2.5 w-28 focus:outline-none focus:border-white rounded-none"
-            />
+              <div className="relative w-full h-1 bg-white/10 rounded mt-3">
+                <div
+                  className="absolute h-full bg-white rounded"
+                  style={{
+                    left: `${(minVal / 2000000) * 100}%`,
+                    right: `${100 - (maxVal / 2000000) * 100}%`,
+                  }}
+                />
+                <input
+                  type="range"
+                  min="0"
+                  max="2000000"
+                  step="10000"
+                  value={filters.min_price || 0}
+                  onChange={(e) => {
+                    const val = Math.min(Number(e.target.value), maxVal - 50000);
+                    setFilters({ ...filters, min_price: val });
+                  }}
+                  className="absolute w-full h-1 appearance-none bg-transparent pointer-events-none accent-white left-0 top-1/2 -translate-y-1/2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-moz-range-thumb]:pointer-events-auto transform-gpu"
+                />
+                <input
+                  type="range"
+                  min="0"
+                  max="2000000"
+                  step="10000"
+                  value={filters.max_price || 2000000}
+                  onChange={(e) => {
+                    const val = Math.max(Number(e.target.value), minVal + 50000);
+                    setFilters({ ...filters, max_price: val });
+                  }}
+                  className="absolute w-full h-1 appearance-none bg-transparent pointer-events-none accent-white left-0 top-1/2 -translate-y-1/2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-moz-range-thumb]:pointer-events-auto transform-gpu"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
 
