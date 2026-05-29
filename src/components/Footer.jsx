@@ -39,7 +39,7 @@ export default function Footer({ setView }) {
             <button
               key={item}
               onClick={() => handleNavClick(item)}
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", fontWeight: 300, letterSpacing: "0.2em", color: COLORS.subtle }}
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.85rem", fontWeight: 400, letterSpacing: "0.15em", color: COLORS.subtle }}
               className="uppercase hover:text-white transition-colors"
             >
               {item}
@@ -49,10 +49,10 @@ export default function Footer({ setView }) {
 
         <div className="flex flex-col items-center md:items-end gap-2.5">
           <span 
-            style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", fontWeight: 300, color: COLORS.subtle, letterSpacing: "0.1em" }}
+            style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", fontWeight: 400, color: COLORS.subtle, letterSpacing: "0.05em" }}
             className="opacity-60 text-center md:text-right"
           >
-            © {new Date().getFullYear()} Cabanillas Inmobiliaria
+            © {new Date().getFullYear()} Cabanillas Negocios Inmobiliarios
           </span>
         </div>
 

@@ -42,27 +42,31 @@ export default function Navbar({ setView }) {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
           scrolled 
             ? "bg-black/90 backdrop-blur-md border-white/10" 
             : "bg-transparent border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
+        <div 
+          className={`max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between transition-all duration-500 ${
+            scrolled ? "h-20" : "h-26"
+          }`}
+        >
           
           <button 
             onClick={() => handleLinkClick("home", "inicio")}
-            className="flex items-center gap-4 h-full py-2 transition-transform duration-300 hover:scale-[1.03] origin-left transform-gpu will-change-transform text-left"
+            className="flex items-center gap-4 h-full py-2 transition-transform duration-300 hover:scale-[1.02] origin-left transform-gpu will-change-transform text-left"
             style={{ backfaceVisibility: "hidden" }}
           >
             <img src={logoBlanco} alt="Logo" className="h-12 w-auto object-contain" />
             <div className="h-8 w-[1px] bg-white/20 hidden sm:block" />
             <div className="flex flex-col leading-none">
-              <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.15rem", fontWeight: 500, letterSpacing: "0.12em", color: COLORS.text }}>
+              <span style={{ fontFamily: "Lora, serif", fontSize: "1.3rem", fontWeight: 600, letterSpacing: "0.05em", color: COLORS.text }}>
                 CABANILLAS
               </span>
-              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", fontWeight: 300, letterSpacing: "0.3em", color: COLORS.muted }}>
-                SERVICIOS INMOBILIARIOS
+              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", fontWeight: 400, letterSpacing: "0.2em", color: COLORS.muted }}>
+                NEGOCIOS INMOBILIARIOS
               </span>
             </div>
           </button>
@@ -72,7 +76,7 @@ export default function Navbar({ setView }) {
               <li key={link.label}>
                 <button
                   onClick={() => handleLinkClick(link.view, link.targetId)}
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "0.7rem", fontWeight: 300, letterSpacing: "0.2em", color: COLORS.text }}
+                  style={{ fontFamily: "Inter, sans-serif", fontSize: "0.85rem", fontWeight: 400, letterSpacing: "0.15em", color: COLORS.text }}
                   className="hover:opacity-50 transition-opacity duration-300 uppercase"
                 >
                   {link.label}
@@ -110,8 +114,8 @@ export default function Navbar({ setView }) {
               <button
                 key={link.label}
                 onClick={() => handleLinkClick(link.view, link.targetId)}
-                style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "2rem", fontWeight: 300, letterSpacing: "0.1em", color: COLORS.text }}
-                className="hover:opacity-40 transition-opacity"
+                style={{ fontFamily: "Inter, sans-serif", fontSize: "1.4rem", fontWeight: 500, letterSpacing: "0.1em", color: COLORS.text }}
+                className="hover:opacity-40 transition-opacity uppercase"
               >
                 {link.label}
               </button>

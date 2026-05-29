@@ -10,7 +10,7 @@ export default function Properties({ onViewAll, onSelectProperty }) {
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL)
       .then((res) => res.json())
-      .then((data) => setProperties(data))
+      .then((data) => setProperties(data.slice(0, 5)))
       .catch((err) => console.error(err));
   }, []);
 
@@ -51,10 +51,10 @@ export default function Properties({ onViewAll, onSelectProperty }) {
           className="mb-12 md:mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
         >
           <div>
-            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-3">
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 400, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-3">
               Destacadas
             </p>
-            <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: COLORS.text }}>
+            <h2 style={{ fontFamily: "Lora, serif", fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)", fontWeight: 600, color: COLORS.text, lineHeight: 1.1 }}>
               Propiedades seleccionadas
             </h2>
           </div>
@@ -62,7 +62,7 @@ export default function Properties({ onViewAll, onSelectProperty }) {
           <div className="flex items-center gap-6 justify-between sm:justify-end">
             <button
               onClick={onViewAll}
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: COLORS.text }}
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.85rem", fontWeight: 400, letterSpacing: "0.15em", color: COLORS.text }}
               className="uppercase underline underline-offset-4 hover:opacity-50 transition-opacity whitespace-nowrap"
             >
               Ver todas →
@@ -115,38 +115,38 @@ export default function Properties({ onViewAll, onSelectProperty }) {
                     alt={prop.title} 
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
                   />
-                  <div className="absolute top-3 left-3 bg-white text-black px-3 py-1 font-mono font-bold z-10" style={{ fontSize: "0.55rem", letterSpacing: "0.2em" }}>
+                  <div className="absolute top-3 left-3 bg-white text-black px-3 py-1 font-mono font-bold z-10" style={{ fontSize: "0.7rem", letterSpacing: "0.15em" }}>
                     {prop.operation_type === "SALE" ? "VENTA" : "ALQUILER"}
                   </div>
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
                 </div>
 
                 <div>
-                  <h3 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.3rem", fontWeight: 400, color: COLORS.text }} className="mb-1 truncate">
+                  <h3 style={{ fontFamily: "Lora, serif", fontSize: "1.5rem", fontWeight: 600, color: COLORS.text }} className="mb-1 truncate">
                     {prop.title || "Propiedad sin título"}
                   </h3>
                   <div className="flex items-center gap-1 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={COLORS.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={COLORS.muted} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
-                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, color: COLORS.muted }}>
+                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 400, color: COLORS.muted }}>
                       {prop.location}
                     </span>
                   </div>
                   <div className="flex gap-4 mb-4">
-                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", fontWeight: 300, letterSpacing: "0.1em", color: COLORS.subtle }}>
+                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", fontWeight: 400, letterSpacing: "0.05em", color: COLORS.subtle }}>
                       {prop.total_area} m²
                     </span>
-                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", fontWeight: 300, letterSpacing: "0.1em", color: COLORS.subtle }}>
+                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", fontWeight: 400, letterSpacing: "0.05em", color: COLORS.subtle }}>
                       {prop.rooms} amb.
                     </span>
                   </div>
                   <div className="flex items-center justify-between border-t border-white/10 pt-4">
-                    <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "1.1rem", fontWeight: 500, color: COLORS.text }}>
+                    <span style={{ fontFamily: "Lora, serif", fontSize: "1.3rem", fontWeight: 600, color: COLORS.text }}>
                       {prop.currency} {Number(prop.price).toLocaleString("es-AR")}
                     </span>
-                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.6rem", letterSpacing: "0.2em", color: COLORS.text }} className="uppercase group-hover:underline underline-offset-4">
+                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", letterSpacing: "0.15em", color: COLORS.text }} className="uppercase group-hover:underline underline-offset-4">
                       Ver más →
                     </span>
                   </div>

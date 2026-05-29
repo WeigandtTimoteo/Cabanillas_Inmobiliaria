@@ -19,12 +19,12 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="w-full max-w-full overflow-hidden"
         >
-          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.65rem", fontWeight: 300, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6">
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 400, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6">
             Contacto
           </p>
-          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 300, color: COLORS.text, lineHeight: 1.15 }} className="mb-8 md:mb-12">
+          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)", fontWeight: 600, color: COLORS.text, lineHeight: 1.15 }} className="mb-8 md:mb-12">
             Hablemos de tu<br />
-            <em>próxima propiedad.</em>
+            próxima propiedad.
           </h2>
 
           <div className="flex flex-col gap-5 mb-10 md:mb-12">
@@ -41,8 +41,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div className="overflow-hidden min-w-0">
-                  <div style={{ fontFamily: "Inter, sans-serif", fontSize: "0.55rem", letterSpacing: "0.2em", color: COLORS.muted }} className="uppercase mb-0.5">{link.label}</div>
-                  <div style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 300, color: COLORS.text }} className="group-hover:opacity-50 transition-opacity truncate break-all md:break-normal">{link.val}</div>
+                  <div style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", letterSpacing: "0.15em", color: COLORS.muted }} className="uppercase mb-0.5">{link.label}</div>
+                  <div style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem", fontWeight: 400, color: COLORS.text }} className="group-hover:opacity-50 transition-opacity truncate break-all md:break-normal">{link.val}</div>
                 </div>
               </a>
             ))}
@@ -50,12 +50,8 @@ export default function Contact() {
 
           <div className="border-t border-white/10 pt-6 grid grid-cols-2 gap-4" style={{ fontFamily: "Inter, sans-serif" }}>
             <div>
-              <span style={{ fontSize: "0.55rem", letterSpacing: "0.15em", color: COLORS.muted }} className="uppercase block mb-1">Atención</span>
-              <p className="text-xs font-light text-neutral-400">Lunes a Viernes<br />09:00 a 18:00 hs</p>
-            </div>
-            <div>
-              <span style={{ fontSize: "0.55rem", letterSpacing: "0.15em", color: COLORS.muted }} className="uppercase block mb-1">Inmobiliaria</span>
-              <p className="text-xs font-light text-neutral-400">
+              <span style={{ fontSize: "0.78rem", letterSpacing: "0.15em", color: COLORS.muted }} className="uppercase block mb-1">Inmobiliaria</span>
+              <p className="text-sm font-light text-neutral-400">
                 Córdoba, Argentina<br />
                 <a href="https://cpicordoba.org.ar/matriculados/?as=6929" target="_blank" rel="noopener noreferrer" className="hover:underline hover:text-white transition-colors duration-200">
                   MP-CPI 6929
@@ -79,8 +75,8 @@ export default function Contact() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80" />
           <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8" style={{ fontFamily: "Inter, sans-serif" }}>
-            <p style={{ fontSize: "0.55rem", letterSpacing: "0.25em", color: COLORS.text }} className="uppercase font-light mb-1">Cabanillas</p>
-            <p style={{ fontSize: "0.75rem", color: COLORS.muted }} className="font-light tracking-wide">Estilo, seriedad y valor patrimonial.</p>
+            <p style={{ fontSize: "0.75rem", letterSpacing: "0.25em", color: COLORS.text }} className="uppercase font-light mb-1">Cabanillas</p>
+            <p style={{ fontSize: "0.85rem", color: COLORS.muted }} className="font-light tracking-wide">Estilo, seriedad y valor patrimonial.</p>
           </div>
         </motion.div>
 
