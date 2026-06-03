@@ -63,8 +63,8 @@ export default function OwnerForm({ onBack }) {
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 400, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-3">
             Servicios consignaciones
           </p>
-          <h1 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.4rem, 5vw, 3.6rem)", fontWeight: 600, color: COLORS.text }} className="leading-tight">
-            Ofrecé tu propiedad
+          <h1 style={{ fontFamily: "Lora, serif", fontSize: "clamp(2.4rem, 5vw, 3.4rem)", fontWeight: 400, color: COLORS.text }} className="leading-tight">
+            CONTACTANOS
           </h1>
           <p style={{ fontFamily: "Inter, sans-serif" }} className="text-base font-light text-neutral-400 mt-4 max-w-xl leading-relaxed">
             Completá los datos básicos de tu inmueble. Al finalizar, elegí el canal de tu preferencia para enviarnos la ficha técnica de forma instantánea.
@@ -78,7 +78,7 @@ export default function OwnerForm({ onBack }) {
               <label style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", letterSpacing: "0.15em", color: COLORS.muted }} className="uppercase">Nombre completo</label>
               <input
                 type="text"
-                placeholder="Ej: Sofía Cabanillas"
+                placeholder="XXXX XXXXXXX"
                 value={form.nombre}
                 onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                 className="border-b border-white/20 bg-transparent py-3 focus:outline-none focus:border-white transition-colors rounded-none text-white font-light text-base"
@@ -88,7 +88,7 @@ export default function OwnerForm({ onBack }) {
               <label style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", letterSpacing: "0.15em", color: COLORS.muted }} className="uppercase">Teléfono / Email de contacto</label>
               <input
                 type="text"
-                placeholder="Ej: 351XXXXXXX"
+                placeholder="+54 9 XXXXXXXXXX"
                 value={form.contacto}
                 onChange={(e) => setForm({ ...form, contacto: e.target.value })}
                 className="border-b border-white/20 bg-transparent py-3 focus:outline-none focus:border-white transition-colors rounded-none text-white font-light text-base"
@@ -157,7 +157,7 @@ export default function OwnerForm({ onBack }) {
               whileTap={{ scale: 0.99 }}
               className={`flex-1 py-4 text-sm tracking-wider uppercase font-medium flex items-center justify-center gap-2 border transition-colors ${
                 !form.nombre || !form.contacto || !form.ubicacion
-                  ? "opacity-20 cursor-not-allowed border-white/10"
+                  ? "opacity-40 cursor-not-allowed border-white/100"
                   : "bg-white text-black border-white hover:bg-neutral-200"
               }`}
             >
@@ -172,7 +172,7 @@ export default function OwnerForm({ onBack }) {
               whileTap={{ scale: 0.99 }}
               className={`flex-1 py-4 text-sm tracking-wider uppercase font-medium flex items-center justify-center gap-2 border transition-colors ${
                 !form.nombre || !form.contacto || !form.ubicacion
-                  ? "opacity-20 cursor-not-allowed border-white/10"
+                  ? "opacity-40 cursor-not-allowed border-white/100"
                   : "bg-transparent text-white border-white/20 hover:bg-white hover:text-black hover:border-white"
               }`}
             >

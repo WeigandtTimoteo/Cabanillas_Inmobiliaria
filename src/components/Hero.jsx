@@ -25,13 +25,13 @@ export default function Hero({ onConsign }) {
             <h1
               style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(3.2rem, 7vw, 6rem)", fontWeight: 700, lineHeight: 1.05, color: COLORS.text }}
             >
-              Tu próxima<br />
-              propiedad,<br />
-              aquí.
+              El valor<br />
+              de sentirte<br />
+              acompañado.
             </h1>
             
             <p
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "0.95rem", fontWeight: 300, lineHeight: 1.8, color: COLORS.subtle }}
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "1.2rem", fontWeight: 300, lineHeight: 1.8, color: COLORS.subtle }}
               className="mt-6 md:mt-8 max-w-sm"
             >
               Asesoramiento personalizado en compra, venta y alquiler de propiedades. Confianza y resultados.
