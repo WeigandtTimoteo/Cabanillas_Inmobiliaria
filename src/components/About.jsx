@@ -18,12 +18,12 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-center md:text-left flex flex-col items-center md:items-start"
+          className="text-left md:text-left flex flex-col md:items-start"
         >
-          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6">
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6 text-center">
             Quiénes somos
           </p>
-          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.7rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8">
+          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.7rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8 text-center">
             Más de una década<br />
             conectando personas<br />
             con su hogar ideal.
