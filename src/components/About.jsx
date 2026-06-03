@@ -23,7 +23,7 @@ export default function About() {
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6">
             Quiénes somos
           </p>
-          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.5rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8">
+          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(6rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8">
             Más de una década<br />
             conectando personas<br />
             con su hogar ideal.
