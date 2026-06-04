@@ -1,16 +1,26 @@
-# React + Vite
+# Cabanillas Servicios Inmobiliarios - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web moderno, de estética minimalista y look editorial de alta gama desarrollado para **Cabanillas Servicios Inmobiliarios** (Córdoba, Argentina). La interfaz está diseñada bajo un enfoque de catálogo exclusivo, garantizando una fluidez visual premium, animaciones sutiles y una legibilidad impecable en resoluciones móviles y de escritorio.
 
-Currently, two official plugins are available:
+## 🚀 Características Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Diseño Ultra Premium:** Estética dark/light unificada con tipografías curadas (`Lora` e `Inter`) y espaciados de estilo editorial de catálogo de lujo.
+- **Carrusel Adaptativo:** Selector dinámico de propiedades destacadas limitado a un top de 5 elementos para mantener la navegación ágil.
+- **Filtros Avanzados:** Panel de búsqueda interactivo en tiempo real integrado directamente con la API (búsqueda por texto, tipo de operación, estado, ambientes y rango de precio en USD).
+- **Ficha Técnica Detallada:** Galería de imágenes fluida con soporte de gestos (*drag/swipe*) para navegación táctil y desglose técnico estructurado del inmueble.
+- **Integración con Canales de Contacto:** Formularios dinámicos que parsean y formatean la información para el envío automatizado de fichas de consignación a través de WhatsApp y Gmail API.
+- **Navbar Dinámica:** Navegación interactiva con cambio de dimensiones y opacidad en base al comportamiento del scroll.
 
-## React Compiler
+## 🛠️ Tecnologías Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** (Vite)
+- **Tailwind CSS v4** (Enfoque nativo con variables modernas y optimización de compilación)
+- **Motion / Framer Motion** (`motion/react` para micro-interacciones y transiciones fluidas de hardware-accelerated)
+- **Lucide React / SVG Inline** (Iconografía limpia y vectorizada)
 
-## Expanding the ESLint configuration
+## 📦 Instalación y Configuración
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/tu-usuario/cabanillas-frontend.git](https://github.com/tu-usuario/cabanillas-frontend.git)
+   cd cabanillas-frontend
