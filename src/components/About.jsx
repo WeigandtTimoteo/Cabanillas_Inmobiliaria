@@ -18,27 +18,27 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-left md:text-left flex flex-col md:items-start"
+          className="text-left md:text-center flex flex-col items-start md:items-center order-2 md:order-1"
         >
-          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6 text-center">
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.3em", color: COLORS.muted }} className="uppercase mb-4 md:mb-6 w-full text-center">
             Quiénes somos
           </p>
-          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.7rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8 text-center">
+          <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.7rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8 w-full text-center">
             Más de una década<br />
             conectando personas<br />
             con su hogar ideal.
           </h2>
-          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "1.10rem", fontWeight: 500, lineHeight: 2, color: COLORS.bg }} className="mb-6 max-w-md">
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "1.10rem", fontWeight: 500, lineHeight: 2, color: COLORS.bg }} className="mb-6 max-w-md text-left md:text-center md:mx-auto">
             En Cabanillas Inmobiliaria entendemos que cada operación es única. Trabajamos con dedicación, honestidad y conocimiento profundo del mercado para acompañarte en cada etapa del proceso.
           </p>
-          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "1.10rem", fontWeight: 500, lineHeight: 2, color: COLORS.bg }} className="mb-10 md:mb-12 max-w-md">
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "1.10rem", fontWeight: 500, lineHeight: 2, color: COLORS.bg }} className="mb-10 md:mb-12 max-w-md text-left md:text-center md:mx-auto">
             Nuestro equipo está comprometido con brindarte la mejor experiencia, desde la búsqueda inicial hasta la firma del contrato.
           </p>
 
-          <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-black/40 pt-8 md:pt-10 w-full text-center md:text-left">
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-black/40 pt-8 md:pt-10 w-full text-left md:text-center">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center md:items-start">
-                <div style={{ fontFamily: "Inter, sans-serif", fontSize: "clamp(1.4rem, 5vw, 1.8rem)", fontWeight: 400, color: COLORS.bg }} className="leading-tight">
+              <div key={stat.label} className="flex flex-col items-start md:items-center">
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(1.4rem, 5vw, 1.8rem)", fontWeight: 500, color: COLORS.bg }} className="leading-tight font-mono tracking-tight">
                   {stat.value}
                 </div>
                 <div style={{ fontFamily: "Inter, sans-serif", fontSize: "0.78rem", fontWeight: 500, letterSpacing: "0.05em", color: COLORS.muted }} className="mt-1.5 line-clamp-2 px-1 md:px-0">
@@ -54,12 +54,12 @@ export default function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="border-t-80 relative overflow-hidden w-40 h-40 rounded-full mx-auto md:mx-0 md:w-full md:h-auto md:aspect-[3/4] md:rounded-none transform-gpu shrink-0"
+          className="relative overflow-hidden w-40 h-40 rounded-full mx-auto md:mx-0 md:w-full md:h-auto md:aspect-[3/4] md:rounded-none transform-gpu shrink-0 order-1 md:order-2 md:border-t-80"
         >
           <img 
             src={fotoEquipo} 
             alt="Asesor Cabanillas Inmobiliaria" 
-            className="w-140 h-160 object-cover object-center"
+            className="w-full h-full md:w-140 md:h-160 object-cover object-center"
             style={{ imageRendering: "auto" }}
           />
         </motion.div>
