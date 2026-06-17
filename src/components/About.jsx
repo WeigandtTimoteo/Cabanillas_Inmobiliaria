@@ -24,15 +24,15 @@ export default function About() {
             Quiénes somos
           </p>
           <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(2.7rem, 4.5vw, 3.5rem)", fontWeight: 600, color: COLORS.bg, lineHeight: 1.15 }} className="mb-6 md:mb-8 w-full text-center">
-            Más de una década<br />
-            conectando personas<br />
-            con su hogar ideal.
+            Una historia familiar <br /> 
+            construida sobre <br />
+            vínculos reales.
           </h2>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "1.10rem", fontWeight: 500, lineHeight: 2, color: COLORS.bg }} className="mb-6 max-w-md text-left md:text-center md:mx-auto">
-            En Cabanillas Inmobiliaria entendemos que cada operación es única. Trabajamos con dedicación, honestidad y conocimiento profundo del mercado para acompañarte en cada etapa del proceso.
+            Somos padre e hijo, dos generaciones, una misma forma de hacer las cosas. Unidos por la pasión de ayudar a las personas a encontrar el lugar donde construir su futuro.
           </p>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "1.10rem", fontWeight: 500, lineHeight: 2, color: COLORS.bg }} className="mb-10 md:mb-12 max-w-md text-left md:text-center md:mx-auto">
-            Nuestro equipo está comprometido con brindarte la mejor experiencia, desde la búsqueda inicial hasta la firma del contrato.
+            Cada cliente tiene una historia distinta, y nuestro trabajo es comprenderla para encontrar la mejor oportunidad para sus objetivos. Por eso trabajamos con cercanía, compromiso y una atención personalizada en cada operación.
           </p>
 
           <div className="grid grid-cols-3 gap-2 sm:gap-6 border-t border-black/40 pt-8 md:pt-10 w-full text-left md:text-center">
