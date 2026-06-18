@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "5493510000000"; 
+  const phoneNumber = "5493513348375"; 
   const message = "Hola! Me comunico desde la web para realizar una consulta sobre las propiedades.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

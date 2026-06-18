@@ -122,6 +122,7 @@ export default function OwnerForm({ onBack }) {
               >
                 <option value="Venta">Poner en Venta</option>
                 <option value="Alquiler">Poner en Alquiler</option>
+                <option value="Administración">Poner en Administración</option>
               </select>
             </div>
           </div>
